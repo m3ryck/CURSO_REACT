@@ -1,8 +1,10 @@
+/*funcao raiz, definindo algumas variaveis*/
 :root {
     --bg-button: #f0f0f0;
     --border-button: solid 1px #888;
 }
 
+/*funcao butao*/
 .button{
     font-size: 1.4em;
     background-color: var(--bg-button);
@@ -10,4 +12,26 @@
     border-right: var(--border-button);
     border-bottom: var(--border-button);
     outline: none;
+}
+/* muda de cor quando ativo*/
+.button:active{
+    background-color: #ccc;
+}
+
+/*funcao para extender o tamanho do butao, ocupando 2 colunas*/
+.button.double{
+    grid-column: span 2;
+}
+/*funcao para extender o tamanho do butao, ocupando 2 colunas*/
+.button.triple{
+    grid-column: span 3;
+}
+
+.button.operation{
+    background-color: #fa8231;
+    color: #fff;
+}
+
+.button.operation:active{
+    background-color: #fa8231cc;
 }
