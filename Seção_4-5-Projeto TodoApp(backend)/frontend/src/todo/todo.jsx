@@ -18,6 +18,7 @@ export default class Todo extends React.Component {
         this.handleAsPending = this.handleAsPending.bind(this)
         this.handleAsDone = this.handleAsDone.bind(this) 
         this.handleSearch = this.handleSearch.bind(this)
+        this.handleClean = this.handleClean.bind(this)
         this.refresh()
     }
 
@@ -25,6 +26,10 @@ export default class Todo extends React.Component {
         const search = description ? `&description__regex=/${description}/`:''
         Axios.get(`${url}?sort=-createdAt${search}`)
         .then(resp => this.setState({...this.state,description,list: resp.data}))
+    }
+
+    handleClean(){
+        this.refresh()
     }
 
     handleSearch(){
@@ -51,7 +56,7 @@ export default class Todo extends React.Component {
 
     handleAdd(){
        const description = this.state.description
-       Axios.post(url,{description}).then(resp=>this.refresh(this.state.description))
+       Axios.post(url,{description}).then(resp=>this.refresh())
      }
     render(){
         return(
@@ -60,7 +65,8 @@ export default class Todo extends React.Component {
         <TodoForm   description = {this.state.description}
                     handleAdd={this.handleAdd} 
                     handleChange={this.handleChange}
-                    handleSearch={this.handleSearch}/>
+                    handleSearch={this.handleSearch}
+                    handleClean = {this.handleClean}/>
         <TodoList   list = {this.state.list} 
                     handleRemove = {this.handleRemove}
                     handleAsDone = {this.handleAsDone} 
