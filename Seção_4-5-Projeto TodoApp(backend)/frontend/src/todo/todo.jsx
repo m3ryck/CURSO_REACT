@@ -67,7 +67,7 @@ export default class Todo extends React.Component {
                     handleChange={this.handleChange}
                     handleSearch={this.handleSearch}
                     handleClean = {this.handleClean}/>
-        <TodoList   list = {this.state.list} 
+        <TodoList   /*list = {this.state.list}*/ 
                     handleRemove = {this.handleRemove}
                     handleAsDone = {this.handleAsDone} 
                     handleAsPending={this.handleAsPending}/>
